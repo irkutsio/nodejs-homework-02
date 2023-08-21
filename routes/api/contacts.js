@@ -22,9 +22,9 @@ router.get('/:id',isValidId, getOneContact);
 
 router.post('/',validateBody(schemas.addSchema), addNewContact);
 
-router.put('/:id', validateBody(schemas.addSchema), updateOneContact);
+router.put('/:id', isValidId, validateBody(schemas.addSchema), updateOneContact);
 
-router.patch('/:id/favorite', validateBodyPatch(schemas.updateFavoriteSchema), updateStatusContact )
+router.patch('/:id/favorite', isValidId, validateBodyPatch(schemas.updateFavoriteSchema), updateStatusContact )
 
 router.delete('/:id',isValidId, deleteOneContact);
 
