@@ -6,17 +6,26 @@ const {
 	getOneContact,
 	addNewContact,
 	updateOneContact,
+	updateStatusContact,
 	deleteOneContact,
 } = require('../../controllers/contacts.js');
 
+const {validateBody, isValidId, validateBodyPatch} = require('../../middlewares');
+
+const { schemas } = require('../../models/contact.js');
+
+
+
 router.get('/', getListContacts);
 
-router.get('/:id', getOneContact);
+router.get('/:id',isValidId, getOneContact);
 
-router.post('/', addNewContact);
+router.post('/',validateBody(schemas.addSchema), addNewContact);
 
-router.put('/:id', updateOneContact);
+router.put('/:id', isValidId, validateBody(schemas.addSchema), updateOneContact);
 
-router.delete('/:id', deleteOneContact);
+router.patch('/:id/favorite', isValidId, validateBodyPatch(schemas.updateFavoriteSchema), updateStatusContact )
+
+router.delete('/:id',isValidId, deleteOneContact);
 
 module.exports = router;
