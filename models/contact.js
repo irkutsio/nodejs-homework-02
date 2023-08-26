@@ -31,6 +31,10 @@ const contactSchema = new Schema(
 			type: Boolean,
 			default: false,
 		},
+		owner: {
+			type: Schema.Types.ObjectId,
+			ref: 'user',
+		},
 	},
 	{ versionKey: false }
 );
@@ -41,11 +45,10 @@ const Contact = model('contact', contactSchema);
 
 const schemas = {
 	addSchema,
-    updateFavoriteSchema
+	updateFavoriteSchema,
 };
 
 module.exports = {
 	Contact,
 	schemas,
-    
 };
