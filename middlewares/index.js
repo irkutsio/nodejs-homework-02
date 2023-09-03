@@ -1,5 +1,6 @@
 const authenticate = require('./authenticate');
 const isValidId = require('./isValidId');
+const upload = require('./upload');
 const validateBody = require('./validateBody');
 const validateBodyPatch = require('./validateBodyPatch');
 const validateSubscriptionPatch = require('./validateSubscriptionPatch');
@@ -11,5 +12,6 @@ module.exports = {
 	validateBody,
 	isValidId,
 	authenticate,
-	validateSubscriptionPatch
+	validateSubscriptionPatch,
+	upload
 };
