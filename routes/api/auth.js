@@ -13,6 +13,8 @@ const {
 	getCurrentController,
 	logoutController,
 	updateSubscriptionStatus,
+	verifyEmailControler,
+	resendEmailController
 } = require('../../controllers/auth');
 
 const router = express.Router();
@@ -20,6 +22,10 @@ const router = express.Router();
 module.exports = router;
 
 router.post('/register', validateBody(schemas.registerSchema), registerController);
+
+router.get('/verify/:verificationToken', verifyEmailControler);
+
+router.post('/verify',  validateBody(schemas.emailSchema), resendEmailController)
 
 router.post('/login', validateBody(schemas.loginSchema), loginController);
 
